@@ -1,0 +1,83 @@
+TEST CASE  1:
+package com.example;
+
+public class forloop {
+
+	public static void main(String[] args) {
+		int n=100;
+		int sum=0;
+		for (int i=1; i<=n; i++) {
+			sum=sum+i;
+		}
+		System.out.println("sum of 100 numbers is:"+sum);
+		}
+
+	}
+OUTPUT:
+sum of 200 numbers is:5010
+
+TEST CASE 2:
+package com.example;
+
+public class forloop {
+
+	public static void main(String[] args) {
+		int n=50;
+		int sum=1;
+		for (int i=1; i<=n; i++) {
+			sum=sum+i;
+		}
+		System.out.println("sum of 200 numbers is:"+sum);
+		}
+
+	}
+OUTPUT:
+sum of 200 numbers is:1276
+
+TEST CASE 3:
+package com.example;
+
+public class forloop {
+
+	public static void main(String[] args) {
+		int n=10;
+		int sum=1;
+		for (int i=1; i<=n; i++) {
+			sum=sum+i;
+		}
+		System.out.println("sum of 200 numbers is:"+sum);
+		}
+
+	}
+OUTPUT :
+sum of 200 numbers is:56
+
+TEST CASE 4:
+class SumOneToOne {
+    public static void main(String[] args) {
+        int sum = 1; // 1 to 1 sum is always 1
+        System.out.println("Sum from 1 to 1 = " + sum);
+    }
+}
+OUTPUT:
+Sum from 1 to 1 = 1
+
+TEST CASE 5:
+ class Sum50to100 {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 50; i <= 100; i++) {
+            sum += i;
+        }
+        System.out.println("Sum from 50 to 100 = " + sum);
+    }
+}
+OUTPUT:
+Sum from 50 to 100 = 3825
+
+RESULT:
+TEST CASE 1:Display the correct sum as 5050
+TEST CASE 2:Display the correct sum as 1276
+TEST CASE 3:Display the correct sum as 56
+TEST CASE 4:Display the correct sum as 1
+TEST CASE 5:Display the correct sum as 3825
