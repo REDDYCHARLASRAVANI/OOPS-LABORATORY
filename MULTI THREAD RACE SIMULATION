@@ -1,0 +1,165 @@
+public class ThreadTestCases {
+	public static void main(String[] args) {
+	System.out.println("\nTC1: Two threads start → Both race together");
+		        Thread t1 = new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("A → step " + i);
+		                try { Thread.sleep(300); } catch(Exception e) {}
+		            }
+		            System.out.println("A finished");
+		        });
+		        Thread t2 = new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("B → step " + i);
+		                try { Thread.sleep(300); } catch(Exception e) {}
+		            }
+		            System.out.println("B finished");
+		        });
+		        t1.start();
+		        t2.start();
+		        System.out.println("\nTC2: Sleep time different → One finishes first");
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("Fast → step " + i);
+		                try { Thread.sleep(200); } catch(Exception e) {}
+		            }
+		            System.out.println("Fast finished");
+		        }).start();
+
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("Slow → step " + i);
+		                try { Thread.sleep(500); } catch(Exception e) {}
+		            }
+		            System.out.println("Slow finished");
+		        }).start();
+		        System.out.println("\nTC3: Race between A and B → Output may vary");
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("X → step " + i);
+		                try { Thread.sleep(250); } catch(Exception e) {}
+		            }
+		            System.out.println("X finished");
+		        }).start();
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("Y → step " + i);
+		                try { Thread.sleep(260); } catch(Exception e) {}
+		            }
+		            System.out.println("Y finished");
+		        }).start();
+
+		        System.out.println("\nTC4: Add a third thread → Output includes three racers");
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("R1 → step " + i);
+		                try { Thread.sleep(150); } catch(Exception e) {}
+		            }
+		            System.out.println("R1 finished");
+		        }).start();
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("R2 → step " + i);
+		                try { Thread.sleep(300); } catch(Exception e) {}
+		            }
+		            System.out.println("R2 finished");
+		        }).start();
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("R3 → step " + i);
+		                try { Thread.sleep(450); } catch(Exception e) {}
+		            }
+		            System.out.println("R3 finished");
+		        }).start();
+
+		        System.out.println("\nTC5: Threads with same sleep → Output may interleave");
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("T1 → step " + i);
+		                try { Thread.sleep(400); } catch(Exception e) {}
+		            }
+		            System.out.println("T1 finished");
+		        }).start();
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("T2 → step " + i);
+		                try { Thread.sleep(400); } catch(Exception e) {}
+		            }
+		            System.out.println("T2 finished");
+		        }).start();
+		        new Thread(() -> {
+		            for(int i=1; i<=3; i++) {
+		                System.out.println("T3 → step " + i);
+		                try { Thread.sleep(400); } catch(Exception e) {}
+		            }
+		            System.out.println("T3 finished");
+		        }).start();
+		    }
+		
+
+	}
+
+
+
+OUTPUT:
+
+TC1: Two threads start → Both race together
+
+TC2: Sleep time different → One finishes first
+
+TC3: Race between A and B → Output may vary
+
+TC4: Add a third thread → Output includes three racers
+
+TC5: Threads with same sleep → Output may interleave
+B → step 1
+A → step 1
+Slow → step 1
+X → step 1
+R1 → step 1
+T2 → step 1
+Fast → step 1
+Y → step 1
+T1 → step 1
+R2 → step 1
+R3 → step 1
+T3 → step 1
+R1 → step 2
+Fast → step 2
+X → step 2
+Y → step 2
+B → step 2
+R2 → step 2
+A → step 2
+R1 → step 3
+T3 → step 2
+T2 → step 2
+T1 → step 2
+Fast → step 3
+R3 → step 2
+R1 finished
+Slow → step 2
+X → step 3
+Y → step 3
+Fast finished
+B → step 3
+R2 → step 3
+A → step 3
+X finished
+Y finished
+T3 → step 3
+T1 → step 3
+T2 → step 3
+R3 → step 3
+A finished
+R2 finished
+B finished
+Slow → step 3
+T3 finished
+T1 finished
+T2 finished
+R3 finished
+Slow finished
+
+
+
