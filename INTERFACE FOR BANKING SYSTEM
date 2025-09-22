@@ -1,0 +1,78 @@
+public class BankingSystem1 {
+ class Account {
+		        String name;
+		        int accNo;
+		        double balance;
+
+		        Account(String name, int accNo, double balance) {
+		            this.name = name;
+		            this.accNo = accNo;
+		            this.balance = balance;
+		        }
+		        void deposit(double amount) {
+		            balance += amount;
+		            System.out.println(amount + " deposited. Balance: " + balance);
+		        }
+		        void withdraw(double amount) {
+		            balance -= amount;
+		            System.out.println(amount + " withdrawn. Balance: " + balance);
+		        }
+		    }
+ class SavingsAccount extends Account {
+		        double minBalance = 500;
+		        SavingsAccount(String name, int accNo, double balance) {
+		            super(name, accNo, balance);
+		        }
+		        void withdraw(double amount) {
+		            if (balance - amount >= minBalance) {
+		                balance -= amount;
+		                System.out.println("Savings Withdraw: " + amount + ". Balance: " + balance);
+		            } else {
+		                System.out.println("Cannot withdraw! Minimum balance should be " + minBalance);
+		            }
+		        }
+		    }
+ class CurrentAccount extends Account {
+		        double overdraftLimit = 2000;
+		        CurrentAccount(String name, int accNo, double balance) {
+		            super(name, accNo, balance);
+		        }
+		        void withdraw(double amount) {
+		            if (balance - amount >= -overdraftLimit) {
+		                balance -= amount;
+		                System.out.println("Current Withdraw: " + amount + ". Balance: " + balance);
+		            } else {
+		                System.out.println("Overdraft limit exceeded!");
+		                System.out.println("name:reddycharla sravani");
+		                System.out.println("reg no:2117240030115");
+		            }
+		        }
+		    }
+ public static void main(String[] args) {
+		        BankingSystem1 obj = new BankingSystem1();
+		        SavingsAccount sa = obj.new SavingsAccount("Sravani", 101, 2000);
+		        sa.deposit(1000);
+		        sa.withdraw(2500);
+		        sa.withdraw(200);
+		        System.out.println();
+		        CurrentAccount ca = obj.new CurrentAccount("Reddy", 102, 1000);
+		        ca.deposit(500);
+		        ca.withdraw(1200);
+		        ca.withdraw(2500);
+		        }
+ }
+
+
+OUTPUT:
+1000.0 deposited. Balance: 3000.0
+Savings Withdraw: 2500.0. Balance: 500.0
+Cannot withdraw! Minimum balance should be 500.0
+
+500.0 deposited. Balance: 1500.0
+Current Withdraw: 1200.0. Balance: 300.0
+Overdraft limit exceeded!
+name:reddycharla sravani
+reg no:2117240030115
+
+
+
