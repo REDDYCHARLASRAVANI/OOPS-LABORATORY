@@ -1,0 +1,29 @@
+package com.example;
+
+public class Rectangle2 {
+
+	public static void main(String[] args) {
+		        int width = 10;
+		        int height = 5;
+
+		        int area = width * height;
+		        System.out.println("name:reddycharla sravani");
+		        System.out.println("reg.no:2117240030115");
+
+		        System.out.println("Width: " + width);
+		        System.out.println("Height: " + height);
+		        System.out.println("Area: " + area);
+		    }
+		
+	}
+
+OUTPUT:
+name:reddycharla sravani
+reg.no:2117240030115
+Width: 10
+Height: 5
+Area: 50
+
+
+
+
